@@ -1,30 +1,27 @@
 package Package;
 
 public class Main {
-    static Employee[] qwe = new Employee[10];
+    static Employee[] emloyees = new Employee[10];
 
     public static void main(String[] args) {
 
-        int sum = 0;
-
-
-            qwe[0] = new Employee("Иван Иванович Иванов",generateRandomArray(), generateRandomArraySalary());
-            qwe[1] = new Employee("Иван Александрович Петров", generateRandomArray(), generateRandomArraySalary());
-            qwe[2] = new Employee("Пётр Михайлович Вакуленко", generateRandomArray(),generateRandomArraySalary());
-            qwe[3] = new Employee("Алена Петровна Свободная", generateRandomArray(),generateRandomArraySalary());
-            qwe[4] = new Employee("Лариса Игоревна Сидорова", generateRandomArray(),generateRandomArraySalary());
-            qwe[5] = new Employee("Роман Александрович Губенков", generateRandomArray(),generateRandomArraySalary());
-            qwe[6] = new Employee("Максим Васильевич Лентяй", generateRandomArray(),generateRandomArraySalary());
-            qwe[7] = new Employee("Алексей Денисович Прошуров", generateRandomArray(),generateRandomArraySalary());
-            qwe[8] = new Employee("Денис Михайлович Юзенков", generateRandomArray(),generateRandomArraySalary());
-            qwe[9] = new Employee("Василий Александрович Садоводов", generateRandomArray(),generateRandomArraySalary());
+        emloyees[0] = new Employee("Иван Иванович Иванов", generateRandomInt(1,5), generateRandomInt(15000,150000));
+        emloyees[1] = new Employee("Иван Александрович Петров", generateRandomInt(1,5), generateRandomInt(15000,150000));
+        emloyees[2] = new Employee("Пётр Михайлович Вакуленко", generateRandomInt(1,5), generateRandomInt(15000,150000));
+        emloyees[3] = new Employee("Алена Петровна Свободная", generateRandomInt(1,5), generateRandomInt(15000,150000));
+        emloyees[4] = new Employee("Лариса Игоревна Сидорова", generateRandomInt(1,5), generateRandomInt(15000,150000));
+        emloyees[5] = new Employee("Роман Александрович Губенков", generateRandomInt(1,5), generateRandomInt(15000,150000));
+        emloyees[6] = new Employee("Максим Васильевич Лентяй", generateRandomInt(1,5), generateRandomInt(15000,150000));
+        emloyees[7] = new Employee("Алексей Денисович Прошуров", generateRandomInt(1,5), generateRandomInt(15000,150000));
+        emloyees[8] = new Employee("Денис Михайлович Юзенков", generateRandomInt(1,5), generateRandomInt(15000,150000));
+        emloyees[9] = new Employee("Василий Александрович Садоводов", generateRandomInt(1,5), generateRandomInt(15000,150000));
 
 
         System.out.println("Получить список всех сотрудников со всеми имеющимися по ним данными ");
         printAllList();
         System.out.println();
         System.out.println("Посчитать сумму затрат в месяц");
-        System.out.println(sumSalary(qwe));
+        System.out.println(sumSalary(emloyees));
         System.out.println();
         System.out.println("Найти сотрудника с минимальной заплатой");
         findMinimalSalary();
@@ -39,9 +36,9 @@ public class Main {
         getFioEmployees();
 
     }
+    java.util.Random random = new java.util.Random();
 
-
-    public static int sumSalary(Employee[]qwe) {
+    public static int sumSalary(Employee[] qwe) {
         int sum = 0;
         for (int i = 0; i < 10; i++) {
             sum = sum + qwe[i].getSalary();
@@ -49,49 +46,52 @@ public class Main {
         return sum;
     }
 
-    public static int generateRandomArray() {
+    public static int generateRandomInt(int from, int to) {
         java.util.Random random = new java.util.Random();
-        return random.nextInt(1, 5);
+        return random.nextInt(from, to);
+
     }
-    public static int generateRandomArraySalary() {
-        java.util.Random random = new java.util.Random();
-        return random.nextInt(15000, 150000);
-    }
+
+
     public static void printAllList() {
-        for (int i = 0; i < qwe.length; i++) {
-            System.out.println(qwe[i]);
+        for (int i = 0; i < emloyees.length; i++) {
+            System.out.println(emloyees[i]);
 
         }
     }
+
     public static void findMinimalSalary() {
         int min = 151000;
-        int number=0;
-        for (int i = 0; i < qwe.length; i++) {
-            if (qwe[i].getSalary() < min) {
-                min = qwe[i].getSalary();
+        int number = 0;
+        for (int i = 0; i < emloyees.length; i++) {
+            if (emloyees[i].getSalary() < min) {
+                min = emloyees[i].getSalary();
                 number = i;
             }
         }
-        System.out.println(qwe[number]);
+        System.out.println(emloyees[number]);
     }
+
     public static void findMaximumSalary() {
         int max = -1;
-        int number=0;
-        for (int i = 0; i < qwe.length; i++) {
-            if (qwe[i].getSalary() > max) {
-                max = qwe[i].getSalary();
+        int number = 0;
+        for (int i = 0; i < emloyees.length; i++) {
+            if (emloyees[i].getSalary() > max) {
+                max = emloyees[i].getSalary();
                 number = i;
             }
         }
-        System.out.println(qwe[number]);
+        System.out.println(emloyees[number]);
     }
+
     public static double countAverageSalary() {
         double average = 0;
-        return sumSalary(qwe) / qwe.length ;
+        return sumSalary(emloyees) / emloyees.length;
     }
+
     public static void getFioEmployees() {
-        for (int i = 0; i < qwe.length; i++) {
-            System.out.println(qwe[i].getFullName());
+        for (int i = 0; i < emloyees.length; i++) {
+            System.out.println(emloyees[i].getFullName());
         }
     }
 

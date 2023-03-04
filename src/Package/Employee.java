@@ -34,7 +34,7 @@ public class Employee {
     }
 
     public void setDepartment(int department) {
-        if (department < 0 && department > 5) {
+        if (department <= 0 || department > 5) {
             throw new IllegalArgumentException("Неверное значение Департамента");
         }
         this.department = department;
@@ -43,6 +43,7 @@ public class Employee {
     public void setSalary(int salary) {
         this.salary = salary;
     }
+
     @Override
     public String toString() {
         return id + ". Ф.И.О. " + fullName + " / Департамент " + department + " / Зарплата " + salary;
